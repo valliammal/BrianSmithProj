@@ -1,0 +1,23 @@
+create table Questions
+(
+Ques_ID int identity(1,1) primary key,
+Question nvarchar(max) not null,
+PicPath nvarchar(max) not null,
+PostedBy nvarchar(max) not null,
+Ques_Date datetime default getdate()
+)
+
+
+
+
+
+create table Answers
+(
+Ans_ID int identity (1,1) primary key,
+Answer nvarchar(max) not null,
+Mp3_Name nvarchar(max) not null,
+Status char(1) not null,
+Ques_ID int references Questions(Ques_ID),
+PostedBy nvarchar(max) not null,
+Ans_Date datetime default getdate()
+)

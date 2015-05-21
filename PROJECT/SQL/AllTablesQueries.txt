@@ -1,0 +1,71 @@
+create database ab78727_exam
+
+
+create table Language
+(
+Lang_ID int primary key identity(1,1),
+Lang_Name nvarchar(max) not null
+)
+
+
+create table Country
+(
+C_ID int identity primary key,
+CountryName nvarchar(max) not null,
+CountryCode nvarchar(max) not null
+)
+
+
+
+create table Hobby
+(
+Hobby_ID int identity(1,1) primary key,
+Hobby_Name nvarchar(max)
+)
+
+
+
+create table Profession
+(
+Prof_ID int identity(1,1) primary key,
+Prof_Name nvarchar(max) not null
+)
+
+
+
+create table Industry
+(
+Industry_ID int identity(1,1) primary key,
+Industry_Name nvarchar(max) not null
+)
+
+create table AdminMaster
+(
+Name nvarchar(max) not null,
+Username nvarchar(50) primary key,
+Password nvarchar(max) not null,
+Gender nvarchar(max) not null,
+Email nvarchar(50) primary key,
+Contact nvarchar(max) not null,
+Address nvarchar(max) not null,
+Pincode int,
+UNIQUE(Email)
+)
+
+create table AdminMaster
+(
+Name nvarchar(max) not null,
+Password nvarchar(max) not null,
+Email nvarchar(50) primary key,
+UNIQUE(Email)
+)
+
+create table UserMaster
+(
+UID int identity(1,1) primary key,
+Email nvarchar(50) ,
+Password nvarchar(max) not null,
+Unique(Email)
+)
+
+

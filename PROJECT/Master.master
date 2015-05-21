@@ -1,0 +1,177 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Master.master.cs" Inherits="Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="shortcut icon" href="images/Fav.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnLogin").click(function (e) {
+                e.preventDefault();
+                var user = $("#txtuser").val();
+                var pwd = $("#txtpwd").val();
+                $.ajax({
+                    type: "POST",
+                    url: "Master.master/loginprocess",
+                    data: "{'user':'" + user + "' ,'pwd':'" + pwd + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var res = data.d;
+                        window.location.href = 'User/Default.aspx';
+
+
+                    }
+
+                });
+            });
+
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" style="width:1345px">
+        <div>
+
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+
+        <!----------------------------Popup--------------------------------->
+
+    
+
+        <script>
+
+            $(document).ready(function () {
+
+                $("#login").click(function () {
+
+                    $(".popup-shoo").show();
+
+                })
+
+                $(".cloass-b").click(function () {
+
+                    $(".popup-shoo").hide();
+
+                })
+
+                $("#res").click(function () {
+
+                    $(".res").show();
+
+                })
+
+
+
+                $(".cloass-b").click(function () {
+
+                    $(".res").hide();
+                })
+
+
+                $("#forgot").click(function () {
+
+                    $(".res").show();
+
+                })
+
+
+
+                $(".cloass-b").click(function () {
+
+                    $(".res").hide();
+                })
+
+            });
+
+        </script>
+
+
+        <div class="popup-shoo" style="display: none;">
+
+            <div class="popup-c">
+
+                <div class="cloass-b">X</div>
+
+                <div class="log-had" style="">Login</div>
+
+                <br />
+
+                <br />
+
+                <asp:TextBox ID="txtEmailLogin" runat="server" CssClass="login-box" placeholder="abc@xyz.com"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtEmailLogin"> </asp:RequiredFieldValidator>
+                <br />
+
+                <asp:TextBox ID="txtpwd" runat="server" CssClass="login-box" placeholder="Password" TextMode="Password"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtpwd"> </asp:RequiredFieldValidator><br />
+                <asp:Button ID="btnLoginn" runat="server" Text="Login" CssClass="btn" CausesValidation="False" />
+
+
+                <br />
+                <asp:Label ID="lblerr" runat="server" Text="" ForeColor="Red"></asp:Label>
+                <br />
+            </div>
+        </div>
+
+
+
+        <div class="res" style="display: none;">
+
+            <div class="popup-c" style="margin-top: 150px;">
+
+                <div class="cloass-b">X</div>
+
+                <div class="log-had" style="">Registration</div>
+
+                <br />
+              
+                <asp:TextBox ID="txtEmail" runat="server" CssClass="login-box" placeholder="Email-IDRohit"></asp:TextBox>
+                <asp:TextBox ID="txtpwdReg" runat="server" CssClass="login-box" placeholder="Password" TextMode="Password"></asp:TextBox>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtCpwd" ControlToCompare="txtPwdReg"></asp:CompareValidator>
+                <asp:TextBox ID="txtCpwd" runat="server" CssClass="login-box" placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
+
+                <br />
+                <%-- <asp:ImageButton ID="imgRegister" runat="server" ImageUrl="~/images/UR.jpg" Height="100px" Width="100px" OnClick="imgRegister_Click" />--%>
+                <asp:Button ID="btnRegister" runat="server" Text="Registration" CssClass="btn" CausesValidation="false" />
+
+
+                <br />
+                <asp:Label ID="lblError" runat="server" Text="" ForeColor="Red"></asp:Label>
+
+
+                <br />
+
+                <br />
+            </div>
+
+        </div>
+
+
+        
+    </form>
+    <!----------------------------Popup--------------------------------->
+
+
+
+</body>
+</html>
